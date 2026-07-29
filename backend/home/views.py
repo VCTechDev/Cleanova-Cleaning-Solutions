@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Hero
-from .serializers import HeroSerializer
+from .models import Hero, Statistic
+from .serializers import HeroSerializer, StatisticSerializer
 
 class HeroAPIView(APIView):
     def get(self, request, *args, **kwargs):
@@ -14,4 +14,10 @@ class HeroAPIView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
         serializer = HeroSerializer(hero, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class StatisticsAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        statistics = Statistic.objects.filter(is_active=True).order_by('display_order', 'id')
+        serializer = StatisticSerializer(statistics, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)

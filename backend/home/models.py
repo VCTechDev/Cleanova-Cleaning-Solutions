@@ -12,3 +12,19 @@ class Hero(models.Model):
 
     def __str__(self):
         return self.title
+
+class Statistic(models.Model):
+    title = models.CharField(max_length=255)
+    value = models.CharField(max_length=50)
+    icon = models.CharField(max_length=100, help_text="Icon identifier or SVG content")
+    display_order = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['display_order', 'id']
+        verbose_name = 'Statistic'
+        verbose_name_plural = 'Statistics'
+
+    def __str__(self):
+        return self.title

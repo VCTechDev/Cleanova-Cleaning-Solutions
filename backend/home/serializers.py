@@ -1,5 +1,10 @@
 from rest_framework import serializers
-from .models import Hero
+from .models import Hero, Statistic
+
+class StatisticSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Statistic
+        fields = ('id', 'title', 'value', 'icon', 'display_order')
 
 class HeroSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
