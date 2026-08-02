@@ -28,3 +28,23 @@ class Statistic(models.Model):
 
     def __str__(self):
         return self.title
+
+class Video(models.Model):
+    LANGUAGE_CHOICES = (
+        ('Malayalam', 'Malayalam'),
+        ('Tamil', 'Tamil'),
+    )
+    title = models.CharField(max_length=255, blank=True)
+    language = models.CharField(max_length=50, choices=LANGUAGE_CHOICES)
+    video_file = models.FileField(upload_to='videos/')
+    display_order = models.IntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['display_order', '-created_at']
+        verbose_name = 'Video'
+        verbose_name_plural = 'Videos'
+
+    def __str__(self):
+        return f"{self.title} ({self.language})"

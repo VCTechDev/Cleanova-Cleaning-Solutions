@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Hero, Statistic
-from .serializers import HeroSerializer, StatisticSerializer
+from .models import Hero, Statistic, Video
+from .serializers import HeroSerializer, StatisticSerializer, VideoSerializer
 
 class HeroAPIView(APIView):
     def get(self, request, *args, **kwargs):
@@ -20,4 +20,10 @@ class StatisticsAPIView(APIView):
     def get(self, request, *args, **kwargs):
         statistics = Statistic.objects.filter(is_active=True).order_by('display_order', 'id')
         serializer = StatisticSerializer(statistics, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+class VideosAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        videos = Video.objects.filter(is_active=True).order_by('display_order', '-created_at')
+        serializer = VideoSerializer(videos, many=True, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)

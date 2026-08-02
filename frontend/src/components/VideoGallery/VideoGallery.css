@@ -1,0 +1,115 @@
+.video-gallery-section {
+  padding: 60px 20px;
+  background-color: #f9fafb;
+}
+
+.video-gallery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-gallery-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #111827;
+  margin-bottom: 40px;
+}
+
+.video-language-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.language-tab {
+  padding: 10px 24px;
+  border: 2px solid #e5e7eb;
+  background-color: transparent;
+  color: #4b5563;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-tab:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.language-tab.active {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  color: white;
+}
+
+.video-row-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.video-row {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 16px; /* Space for scrollbar if visible */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.video-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #374151;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.scroll-arrow:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.scroll-arrow.left {
+  left: -24px;
+}
+
+.scroll-arrow.right {
+  right: -24px;
+}
+
+.video-gallery-loading,
+.video-gallery-error,
+.no-videos-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
+
+.video-gallery-error {
+  color: #ef4444;
+}

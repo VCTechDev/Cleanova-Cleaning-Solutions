@@ -4,6 +4,7 @@ import type { Hero } from '../../types/hero';
 import { getHero } from '../../services/heroService';
 import Navbar from '../../components/Navbar/Navbar';
 import StatsSection from '../../components/Stats/StatsSection';
+import VideoGallery from '../../components/VideoGallery/VideoGallery';
 
 const Home: React.FC = () => {
   const [hero, setHero] = useState<Hero | null>(null);
@@ -40,6 +41,7 @@ const Home: React.FC = () => {
       <Navbar />
       {hero ? <HeroComponent hero={hero} /> : null}
       <StatsSection />
+      <VideoGallery />
     </main>
   );
 };

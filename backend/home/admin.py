@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Hero, Statistic
+from .models import Hero, Statistic, Video
 
 @admin.register(Hero)
 class HeroAdmin(admin.ModelAdmin):
@@ -19,4 +19,11 @@ class StatisticAdmin(admin.ModelAdmin):
     list_display = ('title', 'value', 'icon', 'display_order', 'is_active', 'created_at')
     list_filter = ('is_active',)
     search_fields = ('title', 'value')
+    list_editable = ('display_order', 'is_active')
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'language', 'display_order', 'is_active', 'created_at')
+    list_filter = ('language', 'is_active')
+    search_fields = ('title',)
     list_editable = ('display_order', 'is_active')
